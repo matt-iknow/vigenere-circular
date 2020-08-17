@@ -19,5 +19,6 @@ class CircularLL{ //vigenere table as a circular linked list
         CircularLL();
         ~CircularLL();
         void initKey(string key);
-        string cipherText(string text, string key);
+        string encryptText(string text, string key);
+        string decryptText(string ctext, string key);
 };

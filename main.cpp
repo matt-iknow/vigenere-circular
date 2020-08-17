@@ -4,27 +4,48 @@
 
 using namespace std;
 int main(){
-    CircularLL vigenere_table;
+    CircularLL vigenere;
     string text, key, ctext;
+    bool valid_input;
     int selection;
-    cout << "-----Menu-----\n1. Encrypt\n2. Decrypt" << endl;
+    cout << "-----Menu-----\n1. Encrypt\n2. Decrypt\nEnter any other character to exit." << endl;
     cout << "\n";
 
     cin >> selection;
     switch(selection){
         case 1:
-            cout << "input text: ";
-            cin  >> text;
-            cout << "input key: ";
-            cin  >> key;
-            cout << "\nencrypted text: " << vigenere_table.cipherText(text, key) << endl;
+            valid_input = false;
+            while(!valid_input){
+                cout << "input text: ";
+                cin  >> text;
+                cout << "input key: ";
+                cin  >> key;
+                if(true){ //TODO: filter for valid input
+                    valid_input = true;
+                }
+            }
+            cout << "\nencrypted text: " << vigenere.encryptText(text, key) << endl;
             break;
         case 2:
-            //if(true);
+            valid_input = false;
+            while(!valid_input){
+                cout << "input encrypted text: ";
+                cin  >> ctext;
+                cout << "input key: ";
+                cin  >> key;
+                if(true){ //TODO: filter for valid input
+                    valid_input = true;
+                }
+            }
+            cout << "\ndecrypted text: " << vigenere.decryptText(ctext, key) << endl;
             break;
         default:
-            //if(true);
             break;
     }
     return 0;
+}
+
+
+bool isValid(string& text, string& key){
+    return true;
 }

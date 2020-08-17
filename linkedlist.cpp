@@ -44,18 +44,33 @@ CircularLL::~CircularLL(){
     }
 }
 
-string CircularLL::cipherText(string text, string key){
+string CircularLL::encryptText(string text, string key){
     initKey(key);
     string ctext;
     Node* curr_char = _ahead;
     Node* curr_keychar = _khead;
-    for(unsigned int i = 0; i < text.size(); i++){
-        while(*(curr_char->_data) != text[i])
+    for(unsigned int i = 0; i < text.size(); i++){ //for each character
+        while(*(curr_char->_data) != text[i]) //increment to unencrypted character position
             curr_char = curr_char->_next;
-        for(char j = 0; j < *(curr_keychar->_data) - 65; j++)
+        for(char j = 0; j < *(curr_keychar->_data) - 65; j++) //increment "key character value" number of times
             curr_char = curr_char->_next;
-        ctext += *(curr_char->_data);
-        curr_keychar = curr_keychar->_next;
+        ctext += *(curr_char->_data); //we have now reached the encrypted character. add it to string
+        curr_keychar = curr_keychar->_next; //increment key position in preparation for the next iteration
     }
     return ctext;
+}
+string CircularLL::decryptText(string ctext, string key){
+    initKey(key);
+    string text;
+    Node* curr_char = _ahead;
+    Node* curr_keychar = _khead;
+    for(unsigned int i = 0; i < ctext.size(); i++){
+        while(*(curr_char->_data) != ctext[i])//increment to encrypted char position
+            curr_char = curr_char->_next;
+        for(char j = 0; j < 26-(*(curr_keychar->_data)-65); j++)//increment "26 - key char value" number of times (loop around because no prev ptr)
+            curr_char = curr_char->_next;
+        text += *(curr_char->_data);
+        curr_keychar = curr_keychar->_next;
+    }
+    return text;
 }
