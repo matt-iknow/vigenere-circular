@@ -2,7 +2,7 @@
 #include <string>
 
 using namespace std;
-class CircularLL{ //vigenere table as a circular linked list
+class VigenereLL{ //vigenere cipher implemented as a circular linked list
     struct Node{
         Node* _next = nullptr;
         const char* _data = nullptr;
@@ -16,8 +16,8 @@ class CircularLL{ //vigenere table as a circular linked list
     unsigned int _ksize;
 
     public:
-        CircularLL();
-        ~CircularLL();
+        VigenereLL();
+        ~VigenereLL();
         void initKey(string key);
         string encryptText(string text, string key);
         string decryptText(string ctext, string key);

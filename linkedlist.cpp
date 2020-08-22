@@ -1,6 +1,6 @@
 #include "linkedlist.h"
 
-CircularLL::CircularLL(){ //default, constructs a repeating sequence of all english letters
+VigenereLL::VigenereLL(){ //default, constructs a repeating sequence of all english letters
     _khead = nullptr;
     _ahead = new Node(65); //character A
     Node* currnode = _ahead;
@@ -11,7 +11,7 @@ CircularLL::CircularLL(){ //default, constructs a repeating sequence of all engl
     currnode->_next = _ahead; //linking final node back to head
     _asize = 26;
 }
-void CircularLL::initKey(string key){ //constructs a repeating sequence of key
+void VigenereLL::initKey(string key){ //constructs a repeating sequence of key
     _khead = new Node(key[0]);
     Node* currnode = _khead;
     for(unsigned int i = 1; i < key.size(); i++){
@@ -21,7 +21,7 @@ void CircularLL::initKey(string key){ //constructs a repeating sequence of key
     currnode->_next = _khead;
     _ksize = key.size();
 }
-CircularLL::~CircularLL(){
+VigenereLL::~VigenereLL(){
     //delete vigenere sequence
     Node* currnode = _ahead;
     Node* prevnode = nullptr;
@@ -44,7 +44,7 @@ CircularLL::~CircularLL(){
     }
 }
 
-string CircularLL::encryptText(string text, string key){
+string VigenereLL::encryptText(string text, string key){
     initKey(key);
     string ctext;
     Node* curr_char = _ahead;
@@ -59,7 +59,7 @@ string CircularLL::encryptText(string text, string key){
     }
     return ctext;
 }
-string CircularLL::decryptText(string ctext, string key){
+string VigenereLL::decryptText(string ctext, string key){
     initKey(key);
     string text;
     Node* curr_char = _ahead;
