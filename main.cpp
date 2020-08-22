@@ -30,7 +30,7 @@ int main(){
                     cout << "Invalid input. Input cannot contain special characters." << endl;
                 }
             }
-            cout << "\nENCRYPTED RESULT: " << vigenere.encryptText(text, key) << endl;
+            cout << "ENCRYPTED RESULT: " << vigenere.encryptText(text, key) << endl;
             break;
         case 2:
             valid_input = false;
